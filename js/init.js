@@ -114,7 +114,7 @@ jQuery(document).ready(function($) {
 /*	gmaps settings
 ------------------------------------------------------*/
 
-   var map;
+ /*  var map; //commenting map
 
    // main directions
    map = new GMaps({
@@ -159,7 +159,7 @@ jQuery(document).ready(function($) {
 	map.setOptions({
 	   styles: mapStyles
 	});
-
+*/
    // map.addMarker({ 
  		// lat: map.getCenter().lat(),
 	  //  lng: map.getCenter().lng(), 
