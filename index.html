@@ -6,7 +6,7 @@
 
    <!--- Basic Page Needs
    ================================================== -->
-   <meta charset="utf-8">
+	<meta charset="utf-8">
 	<title>BharatSwasthya</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
@@ -22,10 +22,12 @@
    <link rel="stylesheet" href="css/media-queries.css"> 
     <link rel="stylesheet" type="text/css" href="slick/slick.css">
   <link rel="stylesheet" type="text/css" href="slick/slick-theme.css">
+ <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
 
    <!-- Script
    ================================================== -->
 	<script src="js/modernizr.js"></script>
+	
 
    <!-- Favicons
 	================================================== -->
@@ -72,11 +74,102 @@
     .slick-current {
       opacity: 1;
     }
+	
+	.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    -ms-flex: 50%;
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+/* The Close Button */
+.modalClose {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.modalClose:hover,
+.modalClose:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
   </style>
 
 </head>
 
 <body>
+
+<!-- The Modal :Start-->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="modalClose">&times;</span>
+	<div id="divModalContent"></div>
+    <!--<p>Some text in the Modal..</p>-->
+  </div>
+
+</div>
+<!-- The Modal :End-->
 
 	<div id="preloader">      
       <div id="status">
@@ -87,7 +180,8 @@
    <!-- Intro Section
    ================================================== -->
    <section id="intro">
-	<div id="logoDiv" style="background-color:rgba(255,255,255,0.2);overflow:visible;">
+	<div id="logoDiv" >
+	<!--style="background-color:rgba(255,255,255,0.2);overflow:visible;"-->
    	<header class="row">	 
 
 			<div id="logo" style="width:25%;align:center">
@@ -104,8 +198,10 @@
 
 		      <ul id="nav" class="nav">
 		         <li class="current"><a class="smoothscroll" href="#home">Home</a></li>
-		         <li><a class="smoothscroll" href="#about">About</a></li>			         
+		         <li><a class="smoothscroll" href="#availableItem">Products</a></li>
+				 <li><a class="smoothscroll" href="#about">About</a></li>			         
 			      <li><a class="smoothscroll" href="#location">Location</a></li>
+				  
 		      </ul> <!-- end #nav -->
 
 		   </nav> <!-- end #nav-wrap --> 	        
@@ -147,24 +243,40 @@
       </div> <!-- main end -->   
 	 <div style="top:2em">
 <div id="sliderDiv" class="slider" style="margin-top: 0 !important;" >
- <!--  <div>
-      <img src="images/BS1.png">
-    </div>
-    <div>
-      <img src="images/sample-image.jpg">
-    </div>
-    <div>
-      <img src="images/BS1.png">
-    </div>
-	<div>
-      <img src="images/sample-image.jpg">
-    </div>-->
+
  </div>		  
  </div>
 </div>  
 
    </section> <!-- end intro section -->
-
+   <!--Start: Available Items Section-->
+<section id="availableItem">
+<div id="divProductList" class="row"> 
+  <!--<div class="column" >
+    <div onclick=openModalPopUp('Hello!!');><img src="/BharatSwasthya/images/imgTomato.jpg" style="width:100%;">
+	<div style='width:100%;opacity:0.5!important;height:2.5em;z-index:10;bottom:0px;position:absolute;background:black;color:white'>Tomato</div></div>
+    <div><img src="/BharatSwasthya/images/imgTomato.jpg" style="width:100%"></div>
+    <div><img src="/BharatSwasthya/images/imgTomato.jpg" style="width:100%"></div>
+  </div>
+  <div class="column">
+    <div><img src="/BharatSwasthya/images/imgTomato.jpg" style="width:100%"></div>
+    <div><img src="/BharatSwasthya/images/imgTomato.jpg" style="width:100%"></div>
+    <div><img src="/BharatSwasthya/images/imgTomato.jpg" style="width:100%"></div>
+  </div>  
+  <div class="column">
+    <div><img src="/BharatSwasthya/images/imgTomato.jpg" style="width:100%"></div>
+    <div><img src="/BharatSwasthya/images/imgTomato.jpg" style="width:100%"></div>
+    <div><img src="/BharatSwasthya/images/imgTomato.jpg" style="width:100%"></div>
+  </div>
+  <div class="column">
+    <div><img src="/BharatSwasthya/images/imgTomato.jpg" style="width:100%"></div>
+    <div><img src="/BharatSwasthya/images/imgTomato.jpg" style="width:100%"></div>
+    <div><img src="/BharatSwasthya/images/imgTomato.jpg" style="width:100%"></div>
+  </div>-->
+</div>
+<div class="row" style="margin-top: 8px;"> </div>
+</section>
+<!--End: Available Items Section-->
 
    <!-- About Section
    ================================================== -->
@@ -254,7 +366,7 @@
 
    </section> <!-- About Section End-->    
 
-
+   
    <!-- Location Section
    ================================================== -->
 	<section id="location">
@@ -300,8 +412,13 @@
 
 	   </div>-->
 	   <!-- end map -->
-	   <div id="map">
-	   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.377626985295!2d73.75072851489327!3d18.55700638738784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bea8c8f623c9%3A0x2a85869842d6c2a6!2sDavbindu%2C+Gyanoday+Digambar+Jain+Society!5e0!3m2!1sen!2sin!4v1544976923362" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+	   <div class="row" >
+		   <div style="width:50%" >
+		   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.377626985295!2d73.75072851489327!3d18.55700638738784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bea8c8f623c9%3A0x2a85869842d6c2a6!2sDavbindu%2C+Gyanoday+Digambar+Jain+Society!5e0!3m2!1sen!2sin!4v1544976923362" width="100%" height="100%" frameborder="1" style="border:1" fullscreen></iframe>
+			</div>
+			<div class="six columns" style="width:50%">
+			<iframe src="https://www.youtube.com/embed/ZRRBcTPilYE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</div>
 		</div>
 	</section> <!-- end location section -->
 
@@ -314,7 +431,7 @@
          <div class="twelve columns">            
 
             <ul class="copyright">
-               <li>&copy; Copyright 2018 Bharat Swasthya</li>
+               <li>&copy; Copyright 2019 Bharat Swasthya</li>
                <li>Design by <a title="Bharat Swasthya" href="#">Bharat Swasthya</a></li>          
             </ul>
 
@@ -340,16 +457,41 @@
    <script src="js/backstretch.js"></script>  
   <script src="js/init.js"></script>
 <script src="slick/slick.js" type="text/javascript" charset="utf-8"></script>
-
+<!--<script src="js/bootstrap.min.js"></script>-->
  <script type="text/javascript">
+ // Get the modal
+var modal = document.getElementById('myModal');
+ // Get the <span> element that closes the modal
+var span = document.getElementsByClassName("modalClose")[0];
+
+
+// When the user clicks the button, open the modal 
+ function openModalPopUp(message) {
+  modal.style.display = "block";
+  document.getElementById('divModalContent').innerHTML=message.replace('#','<BR/>');
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+ 
  $(document).on('ready', function() {
 
 	 
 	 	 
- $.getJSON("data/goodsData.json", function(json) {
+ $.getJSON("data/goodsData.json", function(obj) {
     {       
-		
-        var divCol  = "<div style='width:100%;position:relative'>";
+		  dbParam = JSON.stringify(obj);
+		  json = JSON.parse(dbParam);
+    /*    var divCol  = "<div style='width:100%;position:relative'>";
         var divClose= "</div>";
 var div="";
         json.forEach(function(obj, index) {
@@ -362,7 +504,41 @@ var div="";
 		
 		  // insert the div you've just created
 		 slickint("sliderDiv");
+	  */
 	  
+		var divColumnOpen="<div class='column' >";
+		var divItemOpen="<div onclick=openModalPopUp('Hello!!');>";
+		//var img="<img src='"+/BharatSwasthya/images/imgTomato.jpg+"' style='width:100%;'>";
+		var divClose="</div>";
+
+		var divProductList1=divColumnOpen;
+		var divProductList2=divColumnOpen;
+		var divProductList3=divColumnOpen;
+		var divProductList4=divColumnOpen;
+		
+		var count=1;
+		json.forEach(function(obj, index) {
+		
+		if(count%4==0)
+		{
+		divProductList1=divProductList1+"<div onclick=openModalPopUp('"+obj.note+"');>"+ "<img src='"+obj.imagePath+"' style='width:100%;'>"+divClose+divClose;
+		}
+		else if(count%4==1)
+		{
+		divProductList2=divProductList2+"<div onclick=openModalPopUp('"+obj.note+"');>"+ "<img src='"+obj.imagePath+"' style='width:100%;'>"+divClose+divClose;
+		}
+		else if(count%4==2)
+		{
+		divProductList3=divProductList3+"<div onclick=openModalPopUp('"+obj.note+"');>"+ "<img src='"+obj.imagePath+"' style='width:100%;'>"+divClose+divClose;
+		}
+		else if(count%4==3)
+		{
+		divProductList4=divProductList4+"<div onclick=openModalPopUp('"+obj.note+"');>"+ "<img src='"+obj.imagePath+"' style='width:100%;'>"+divClose+divClose;
+		}
+		count++;
+		})	
+		
+		document.getElementById("divProductList").innerHTML=divProductList1+divProductList2+divProductList3+divProductList4;
     }
 });	 
 	  function slickint(slickIDName)
@@ -390,6 +566,8 @@ var div="";
 	 
 	  });
 </script>
+
+
 </body>
   
 </html>
